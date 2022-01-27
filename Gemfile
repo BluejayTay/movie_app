@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
 gem 'devise'
 gem 'figaro'
+gem 'httparty', '~> 0.13.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

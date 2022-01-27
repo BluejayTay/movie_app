@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :reiews
+  resources :watch_list_movies
+  get 'movies/popular'
+  get 'movies/search_by_title'
+  get 'movies/search_results'
+  get 'movies/search'
+  resources :movies
   devise_for :users
   get 'welcome/index'
   root to: 'welcome#index'
