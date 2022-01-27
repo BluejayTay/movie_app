@@ -1,0 +1,33 @@
+
+<h1 class="text-center mb-5 pt-3"> Popular Movies </h1>
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+  <% @movies.each do |m| %>
+    <div class="col">
+      <div class="card bg-light">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/original<%= m['backdrop_path']%>" alt="Card image">
+        <div class="card-body" style="height: 7rem;">
+          <h5 class="card-title"><%= m["title"] %></h4>
+        </div>
+        <div class="card-footer">
+        <div class ="d-flex justify-content-between align-items-center">
+          <a href="#" class="btn btn-outline-dark btn-sm">See Details</a>
+          <a href="#" class="btn btn-primary btn-sm">+ Watch List</a>
+        </div>
+        </div>
+      </div>
+    </div> 
+  <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

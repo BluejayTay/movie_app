@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieApp</title>
+    <title>Groovie</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Spicy+Rice&display=swap');
+    </style>
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="alert alert-success" role="alert">
-        <p><%= notice %></p>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert alert-danger" role="alert">
-        <p><%= alert %></p>
-      </div>
-    <% end %>
+   <%= render 'shared/navbar' %>
+    <%= render 'shared/flash' %>
+    <main>
     <%= yield %>
+    </main>
+    <!--<%= render 'shared/footer' %>-->
   </body>
 </html>
