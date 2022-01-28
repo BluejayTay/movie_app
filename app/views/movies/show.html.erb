@@ -1,4 +1,27 @@
+<h1 class="text-center"><%=@movie["title"] %></h1>
+<h5 class="text-center"><%=@movie["tagline"] %> </h5>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= @movie['poster_path']%>" alt="Poster image">
+    </div>
+    <div class="col-6">
+      <p><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (average score out of <%=@movie["vote_count"] %> votes)</p>
+      <p><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</p>
+      <p><strong>Overview:</strong> <%=@movie["overview"] %> </p>
+      <% if @movie["homepage"].present? %>
+        <p> <a href='<%=@movie["homepage"] %>'>Website</a> </p> 
+        <%end%>
+      <p><strong>Status:</strong> <%=@movie["status"] %> </p> 
+      <p><strong>Release date:</strong> <%=@movie["release_date"] %></p>
+    </div>
+  </div>
+</div>
 
-<% @movie do |m|%>
-<%= m.["title"]%>
-<%end%>
+<%= form_with(model: current_user.watch_list_movies.build) do |f| %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :api_id, :value => @movie["id"] %>
+<%= f.hidden_field :image_url, :value => @movie["poster_path"] %>
+<%= f.hidden_field :name, :value => @movie["title"] %>
+  <%= f.submit "+ Watchlist", class: "btn btn-primary btn-sm" %>
+<% end %>
