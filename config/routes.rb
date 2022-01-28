@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :reiews
-  resources :watch_list_movies
+  resources :watch_list_movies #only needed routes
   get 'movies/popular'
   get 'movies/search_by_title'
   get 'movies/search_results'
