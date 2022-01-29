@@ -1,0 +1,6 @@
+<%= simple_form_for @review do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :rating, collection: 0..10 %> 
+    <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>
