@@ -23,14 +23,14 @@ class MovieService
   #{"id":36,"name":"History"},{"id":27,"name":"Horror"},{"id":10402,"name":"Music"},{"id":9648,"name":"Mystery"},{"id":10749,"name":"Romance"},
   #{"id":878,"name":"Science Fiction"},{"id":10770,"name":"TV Movie"},{"id":53,"name":"Thriller"},{"id":10752,"name":"War"},{"id":37,"name":"Western"}]}
   def self.popular
-    response = HTTParty.get("https://api.themoviedb.org/3/discover/movie?api_key=***REMOVED***&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1");
+    response = HTTParty.get("https://api.themoviedb.org/3/discover/movie?api_key=" + "#{ENV['TMDB_api_key']}" + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1");
     response["results"];
   end
   def self.title_search(query)
-    response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=***REMOVED***&language=en-US&query=" + "#{query}" + "&page=1&include_adult=false");
+    response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=" + "#{ENV['TMDB_api_key']}" + "&language=en-US&query=" + "#{query}" + "&page=1&include_adult=false");
     response["results"];
   end
   def self.find_by_api_id(api_id)
-    response = HTTParty.get("https://api.themoviedb.org/3/movie/" + "#{api_id}" + "?api_key=***REMOVED***&language=en-US");
+    response = HTTParty.get("https://api.themoviedb.org/3/movie/" + "#{api_id}" + "?api_key=" + "#{ENV['TMDB_api_key']}" + "&language=en-US");
   end
 end
