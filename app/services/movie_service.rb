@@ -9,8 +9,6 @@ class MovieService
   #survive.","popularity":824.127,"poster_path":"/d5NXSklXo0qyIYkgV94XAgMIckC.jpg","release_date":"2021-09-15",
   #"title":"Dune","video":false,"vote_average":7.9,"vote_count":5664}
   
-  # api key=ab2fd25c159a295d784ed92cec59a73b
-  
   #configuration = {"images":{"base_url":"http://image.tmdb.org/t/p/","secure_base_url":"https://image.tmdb.org/t/p/",
   #"backdrop_sizes":["w300","w780","w1280","original"],"logo_sizes":["w45","w92","w154","w185","w300","w500","original"],
   #"poster_sizes":["w92","w154","w185","w342","w500","w780","original"],"profile_sizes":["w45","w185","h632","original"],
