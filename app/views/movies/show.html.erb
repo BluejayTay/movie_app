@@ -18,8 +18,7 @@
   </div>
 </div>
 
-<%= form_with(model: current_user.watch_list_movies.create) do |f| %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= form_with(model: current_user.watch_list_movies.build) do |f| %>
 <%= f.hidden_field :api_id, :value => @movie["id"] %>
 <%= f.hidden_field :image_url, :value => @movie["poster_path"] %>
 <%= f.hidden_field :name, :value => @movie["title"] %> 
