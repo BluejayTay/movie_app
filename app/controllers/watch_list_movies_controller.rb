@@ -1,6 +1,7 @@
 class WatchListMoviesController < ApplicationController
-  #require signed in before actions w/devise
-  def index
+  before_action :authenticate_user!
+
+  def index  
     @watch_list_movies = current_user.watch_list_movies
   end
 
@@ -15,9 +16,15 @@ class WatchListMoviesController < ApplicationController
         format.html
         format.json
     end
+    flash[:notice] = "Movie successfully added to your watchlist!"
+    redirect_to movie_path(id: movie.api_id)
   end
   
   def destroy
+    @watch_list_movie = WatchListMovie.find(params[:id])
+    @watch_list_movie.destroy
+    flash[:notice] = "Movie successfully removed from watchlist!"
+    redirect_to watch_list_movies_path
   end
 
   private
