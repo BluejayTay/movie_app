@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reiews
+  resources :reviews
   resources :watch_list_movies #only needed routes
   get 'movies/popular'
   get 'movies/search_by_title'
