@@ -1,6 +1,17 @@
-
-<h1>Watch_list_movies</h1>
-<% @watch_list_movies.each do |wlm|%>
-<%= wlm%>
-<% end%>
+<div class="container">
+  <h1>You have <%= current_user.watch_list_movies.count %> movies in your watchlist</h1>
+  <div class="row">
+    <% @watch_list_movies.each do |wlm|%>
+    <div class="col-3">
+      <h4>Order/priorty:<%= wlm.order %></h4>
+      <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= wlm.movie.image_url %>" alt="Poster image">
+      <div>
+      <%= link_to "Delete", watch_list_movie_path(wlm.id),
+                      method: :delete,
+                      data: {confirm: "Are you sure?"} %>
+    </div>
+    </div>
+    <% end%>
+  </div>
+</div>
 
