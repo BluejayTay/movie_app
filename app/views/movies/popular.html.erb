@@ -1,20 +1,29 @@
-
-<h1 class="text-center mb-5 pt-3"> Popular Movies </h1>
 <div class="container">
-
+  <h1 class="text-center mb-5 pt-3"> Popular Movies </h1>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
   <% @movies.each do |movie| %>
     <div class="col">
       <div class="card bg-light">
         <img class="card-img-top" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Card image">
         <div class="card-body" style="height: 7rem;">
-          <h5 class="card-title"><%= movie["title"] %></h4>
+          <h5 class="card-title"><%= movie["title"] %></h5>
         </div>
-        <div class="card-footer">
-        <div class ="d-flex justify-content-between align-items-center">
-          <a href="<%= movie_path(movie["id"]) %>" class="btn btn-outline-dark btn-sm">See Details</a>
-          <a href="#" class="btn btn-primary btn-sm">+ Watch List</a>
-        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center">
+        <div class ="btn-group">
+          <%= link_to "See details", movie_path(movie["id"]), class: "btn btn-outline-dark btn-sm"%>
+          <% m = current_user.movies.find_by(api_id: movie["id"])%>
+          <% if m.present? %>
+            <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
+            <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger"%>
+          <% else %>
+            <%= form_with(model: current_user.watch_list_movies.build) do |f| %>
+              <%= f.hidden_field :api_id, :value => movie["id"] %>
+              <%= f.hidden_field :image_url, :value => movie["poster_path"] %>
+              <%= f.hidden_field :name, :value => movie["title"] %> 
+              <%= f.submit "+ Watchlist", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %>
+          </div>
         </div>
       </div>
     </div> 
