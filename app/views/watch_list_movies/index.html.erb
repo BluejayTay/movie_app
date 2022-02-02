@@ -1,17 +1,17 @@
 <div class="container">
-  <h1>You have <%= current_user.watch_list_movies.count %> movies in your watchlist</h1>
-  <div class="row">
+  <h1 class="text-center">You have <%= current_user.watch_list_movies.count %> movies in your watchlist</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
     <% @watch_list_movies.each do |wlm|%>
-    <div class="col-3">
-      <h4>Order/priorty:<%= wlm.order %></h4>
-      <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= wlm.movie.image_url %>" alt="Poster image">
-      <div>
-      <%= link_to "Delete", watch_list_movie_path(wlm.id),
-                      method: :delete,
-                      data: {confirm: "Are you sure?"} %>
-    </div>
-    </div>
-    <% end%>
+      <div class="col">
+        <div class="card bg-dark">
+          <div class="card-top text-center py-2">
+            <%= link_to "See details", movie_path(wlm.movie.api_id), class: "btn btn-sm btn-info"%>
+            <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger"%>
+          </div>
+          <img class="card-img-bottom" src="https://image.tmdb.org/t/p/original<%= wlm.movie.image_url %>" alt="Poster image">
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
