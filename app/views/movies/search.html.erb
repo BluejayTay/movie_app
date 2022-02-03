@@ -1,16 +1,16 @@
 
 <div class="container">
-
-  <%= link_to 'Popular', movies_popular_path %>
-
   <div class="row">
-    Search by title:
-    <form id="search_form" action="/movies/search_by_title">
-      <div class="form-group">
-        <input type="text" class="form-control" id="search_input" name = "name" placeholder="e.g., Dune">
-      </div>
-      <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
+    <div class="col-6">
+    <%= link_to "Popular Movies", movies_popular_path, class: "btn btn-primary"%>
 
+      <h6>Search by title:</h6>
+      <form id="search_form" action="/movies/search_by_title">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search_input" name = "name" placeholder="e.g., Dune">
+        </div>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>
