@@ -1,17 +1,40 @@
 <div class="container">
-  <h1 class="text-center">You have <%= current_user.watch_list_movies.count %> movies in your watchlist</h1>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
-    <% @watch_list_movies.each do |wlm|%>
-      <div class="col">
-        <div class="card bg-dark">
-          <div class="card-top text-center py-2">
-            <%= link_to "See details", movie_path(wlm.movie.api_id), class: "btn btn-sm btn-info"%>
-            <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger"%>
+  <h1 class="text-center mb-5">You have <%= current_user.watch_list_movies.count %> movies in your watchlist</h1>
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-0">
+<% @watch_list_movies.each do |wlm|%>
+<div class="col">
+<div class="card bg-dark mt-2 mx-1">
+  <div class="card-header bg-light text-center">
+    <%= wlm.movie.name %>
+  </div>
+  <div class="row g-0">
+    <div class="col-md-6">
+      <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/original<%= wlm.movie.image_url %>" alt="Poster image">
+    </div>
+
+    <div class="col-md-6" style="background-color:#020307;">
+      <div class="card-body text-white" style="font-weight:400">
+        <%= simple_form_for wlm do |f| %>
+          <%= f.hidden_field :user_id, value: wlm.user_id %>
+          <%= f.hidden_field :movie_id, value: wlm.movie_id %>
+          <div>
+          <%= f.input :order, as: :radio_buttons, 
+            collection: [['1', 'Low'], ['2', 'Medium'], ['3', 'High']], 
+            label_method: :second, value_method: :first, 
+            label: "Priority:", wrapper: :vertical_collection_inline %>
           </div>
-          <img class="card-img-bottom" src="https://image.tmdb.org/t/p/original<%= wlm.movie.image_url %>" alt="Poster image">
-        </div>
+          <%= f.button :submit, "Update", class: "btn btn-outline-light mt-2" %>
+        <% end %>
       </div>
-    <% end %>
+    </div> 
+      <div class="card-footer bg-dark d-flex justify-content-between">
+        <%= link_to "See details", movie_path(wlm.movie.api_id), class: "btn btn-sm btn-info"%>
+        <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger"%>
+      </div>
+      </div>
+    
   </div>
 </div>
-
+<%end%>
+</div>
+</div>
