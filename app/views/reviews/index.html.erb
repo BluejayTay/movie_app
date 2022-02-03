@@ -1,22 +1,30 @@
-<h1 class="text-center"> Your Reviews </h1>
-<a href="<%= new_review_path %>" class="btn btn-primary">New Review</a>
 <div class="container">
-    <% @reviews.each do |r|%>
-    <div class="row">
-      <div class="col-3 g-3">
-        <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= r.movie.image_url %>" alt="Poster image">
-      </div>
-      <div class="col-9 g-3">
-        Rating: <%= r.rating%>/10 <br>
-        Content: <%= r.content%>
-        <div><%= link_to "Edit", edit_review_path(r.id)%>
+  <h1 class="text-center">Your Reviews</h1>
+  <% @reviews.each do |r|%>
+    <div class="card mb-3">
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <img src="https://image.tmdb.org/t/p/original<%= r.movie.image_url %>" class="img-fluid rounded-start" alt="Poster image">
         </div>
-        <div><%= link_to "Delete", review_path(r.id),
-                      method: :delete,
-                      data: {confirm: "Are you sure?"} %>
+
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title"><%= r.movie.name %></h5>
+            <p class="card-text"><%= r.rating%>/10: <%= r.content%> </p>
+          </div>
+          <div class="card-footer">
+              <%= link_to "Edit", edit_review_path(r.id), class: "btn btn-dark"%>
+              <%= link_to "Delete", review_path(r.id),
+                              method: :delete,
+                              data: {confirm: "Are you sure?"}, 
+                              class: "btn btn-danger" %>
+          </div>
         </div>
+        
       </div>
+
     </div>
-    <% end%>
-  </div>
+  <%end%>
 </div>
