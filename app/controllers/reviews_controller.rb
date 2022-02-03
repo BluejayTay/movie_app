@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  # require authentication w/ devise
+  before_action :authenticate_user!
 
   def index
     @reviews = current_user.reviews
@@ -7,20 +7,21 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @movie_api_id = params[:api_id]
   end
 
   def create
-    binding.pry
-    @review = current_user.reviews.build(review_params)
+    @movie = Movie.find_or_create_by(movie_params)
+    
+    review_creation_params = review_params.merge(user_id: current_user.id, movie_id: @movie.id)
+    Review.create!(review_creation_params)
+    
     respond_to do |format|
-      if @review.save
-        format.html { redirect_to reviews_path, notice: "Review was successfully created." }
-        format.json
-      else
-        format.html 
-        format.json 
-      end
+      format.html
+      format.json
     end
+
+    redirect_to movie_path(id: @movie.api_id)
   end
 
   def edit
@@ -29,10 +30,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    
     if @review.update(review_params)
       flash[:notice] = "Review successfully edited!"
       redirect_to reviews_path
@@ -50,8 +48,12 @@ class ReviewsController < ApplicationController
   
   private
 
+  def movie_params
+    params.require(:review).permit(:api_id, :name, :image_url)
+  end
+
   def review_params
-    params.require(:review).permit(:user_id, :movie_id, :content, :rating)
+    params.require(:review).permit(:content, :rating)
   end
   
 end
