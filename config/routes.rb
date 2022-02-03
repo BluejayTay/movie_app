@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'movies/search_by_title'
   get 'movies/search_results'
   get 'movies/search'
+  get 'movies/top_rated'
   resources :movies
   devise_for :users
   get 'welcome/index'

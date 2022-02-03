@@ -9,6 +9,10 @@ class MoviesController < ApplicationController
     @movies = MovieService.popular
   end
 
+  def top_rated
+    @movies = MovieService.top_rated
+  end
+
   def search_by_title
     query = params[:name]
 
