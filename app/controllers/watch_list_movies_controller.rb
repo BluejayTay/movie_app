@@ -42,6 +42,7 @@ class WatchListMoviesController < ApplicationController
   def movie_params
     params.require(:watch_list_movie).permit(:api_id, :name, :image_url)
   end
+  
   def watch_list_movie_params
     params.require(:watch_list_movie).permit(:order)
   end
