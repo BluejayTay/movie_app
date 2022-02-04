@@ -2,77 +2,16 @@
 <div class="container">
   <h1 class="text-center"><%=@movie["title"] %></h1>
   <h5 class="text-center"><%=@movie["tagline"] %> </h5>
-  <!--<div class="card mb-3">
-    <div class="col-6">
-      <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/original<%= @movie['poster_path']%>" alt="Poster image">
-    </div>
-    <div class="col-6">
-      <% m = current_user.movies.find_by(api_id: @movie["id"])%>
-      <% if m.present? %>
-      <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
-        <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger"%>
-      <% else %>
-        <%= form_with(model: current_user.watch_list_movies.build) do |f| %>
-          <%= f.hidden_field :api_id, :value => @movie["id"] %>
-          <%= f.hidden_field :image_url, :value => @movie["poster_path"] %>
-          <%= f.hidden_field :name, :value => @movie["title"] %> 
-          <%= f.submit "+ Watchlist", class: "btn btn-primary btn-sm" %>
-        <% end %>
-      <% end %>
-    
-      <div>
-        <p><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (average score out of <%=@movie["vote_count"] %> votes)</p>
-        <p><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</p>
-        <p><strong>Status:</strong> <%=@movie["status"] %> </p> 
-        <p><strong>Release date:</strong> <%=@movie["release_date"] %></p>
-        <p><strong>Overview:</strong> <%=@movie["overview"] %> </p>
-        <% if @movie["homepage"].present? %>
-          <p> <a href='<%=@movie["homepage"] %>'>Website</a> </p> 
-        <%end%>
+ 
+  <div class="card bg-dark">
+    <div class="row g-0">
+
+      <div class="col-md-3">
+        <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/original<%= @movie['poster_path']%>" alt="Poster image">
       </div>
 
-      <div style="background-color: grey;">
-        <h4>Reviews</h4>
-        <% m = Movie.find_by(api_id: @movie["id"])%>
-        <% if m.present? %>
-          <% if m.reviews.present? %>
-            <% m.reviews.each do |review|%>
-              <strong>Username: <%= review.user.username%> </strong><br>
-              <strong>Rating: </strong><%= review.rating%>/10 <br>
-              <%= review.content%>
-            <%end%>
-          <% else%>
-            <p>No reviews yet</p>
-          <%end%>
-        <% else%>
-          <p>No reviews yet</p>
-        <% end %>
-        <%= form_for Review.new do |f| %>
-    <%= f.hidden_field :api_id, value: @movie["id"] %>
-    <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
-    <%= f.hidden_field :name, value: @movie["title"] %> 
-    <%= label_tag(:rating, "Rating:") %>
-    <%= f.text_field :rating %>
-    <br>
-    <%= label_tag(:content, "Content:") %>
-    <%= f.text_field :content %>
-    <br>
-    <br>
-    <%= f.submit %> 
-    <% end %>
-      </div>
-    </div>
-  </div>
-</div>
--->
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/original<%= @movie['poster_path']%>" alt="Poster image">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <div class="card-header"> 
+      <div class="col-md-9">
+        <div class="card-header" style="background-color:#101012;"> 
           <% m = current_user.movies.find_by(api_id: @movie["id"])%>
           <% if m.present? %>
             <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
@@ -86,7 +25,7 @@
             <% end %>
           <% end %>
         </div>
-        <div>
+        <div class="card-body text-white">
           <p><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (average score out of <%=@movie["vote_count"] %> votes)</p>
           <p><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</p>
           <p><strong>Status:</strong> <%=@movie["status"] %> </p> 
@@ -98,19 +37,46 @@
         </div>
       </div>
     </div>
+
+    <div class="row g-0">
+      
+
+      <div class="col-3">
+        <div class="card-body bg-light">
+          <h4 class="text-end">Reviews</h4>
+          <div>
+            <%= simple_form_for Review.new do |f| %>
+              <%= f.hidden_field :api_id, value: @movie["id"] %>
+              <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
+              <%= f.hidden_field :name, value: @movie["title"] %> 
+              <%= f.input :rating, collection: 1..10 %>
+              <%= f.input :content %>
+              <%= f.submit %> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-9 bg-light">
+        <div class="card-body bg-light mb-0">
+          <% m = Movie.find_by(api_id: @movie["id"])%>
+            <% if m.present? %>
+              <% if m.reviews.present? %>
+                <% m.reviews.each do |review|%>
+                  <strong> <%= review.user.username%> </strong> on <%= review.created_at %><br>
+                  <strong><%= review.rating%>/10: </strong>
+                  <%= review.content%> <br>
+                <% end %>
+              <% else%>
+                <p>No reviews yet</p>
+              <% end %>
+            <% else%>
+              <p>No reviews yet</p>
+            <% end %>
+          </div>
+        </div>
+
+      
+    </div>
   </div>
 </div>
-</div>
-<%= form_for Review.new do |f| %>
-    <%= f.hidden_field :api_id, value: @movie["id"] %>
-    <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
-    <%= f.hidden_field :name, value: @movie["title"] %> 
-    <%= label_tag(:rating, "Rating:") %>
-    <%= f.text_field :rating %>
-    <br>
-    <%= label_tag(:content, "Content:") %>
-    <%= f.text_field :content %>
-    <br>
-    <br>
-    <%= f.submit %> 
-    <% end %>
