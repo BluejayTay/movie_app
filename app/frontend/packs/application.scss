@@ -1,16 +1,25 @@
-main {
-  margin-bottom: 100px;
-  margin-top:50px;
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
 
+#content-wrap {
+  padding-bottom: 10rem;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10rem;
 }
 
 footer {
-  background-color: #932fac;
-  color: #000000;
-  margin-top: auto;
-  padding-bottom: 5px;
+  background-color: #a061ce;
+  color: black;
   text-align: center;
 }
+
 .signup {
   color:#000000;
   background-color: #b3e5e9;
@@ -24,11 +33,12 @@ footer {
   font-size: 42px;
   color: #ffffff;
 }
+
 body {
   background-color:#c1df7c;
-  font-family: 'Roboto', sans-serif;
-  
+  font-family: "Roboto", sans-serif;
 }
+
 .navbar {
   background-color: #000000;
   color: #ffffff;
