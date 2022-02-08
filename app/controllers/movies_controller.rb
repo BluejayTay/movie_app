@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       @movies = MovieService.title_search(query)
       render "search_results"
     else
-      redirect_to "/movies/search"
+      redirect_to movies_search_path
     end
   end
 

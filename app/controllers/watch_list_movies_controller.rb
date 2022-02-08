@@ -2,7 +2,7 @@ class WatchListMoviesController < ApplicationController
   before_action :authenticate_user!
 
   def index  
-    @watch_list_movies = current_user.watch_list_movies.order(order: :desc)
+    @watch_list_movies = current_user.watch_list_movies.order(priority: :desc)
   end
 
   def new
@@ -42,8 +42,8 @@ class WatchListMoviesController < ApplicationController
   def movie_params
     params.require(:watch_list_movie).permit(:api_id, :name, :image_url)
   end
-  
+
   def watch_list_movie_params
-    params.require(:watch_list_movie).permit(:order)
+    params.require(:watch_list_movie).permit(:priority)
   end
 end

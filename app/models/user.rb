@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def add_to_watchlist(movie)
-    self.watch_list_movies.create(user_id: self.id, movie_id: movie.id, order: 3)
+    self.watch_list_movies.create(user_id: self.id, movie_id: movie.id, priority: 3)
   end
   
 end
