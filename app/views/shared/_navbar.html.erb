@@ -1,10 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand ps-3">
-      <%= image_pack_tag "media/images/example_flower.png", size: "40x40", alt: "flower"%>
-      Groovie
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-label="Toggle navigation">
+    <a class="navbar-brand mx-3" href="/"><%= image_pack_tag "media/images/Groovie_Logo.png", size: "55x55", alt: "Groovie Icon"%>Groovie</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -15,9 +12,9 @@
       </div>
       <% if user_signed_in? %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}, 
-          class: "btn btn-outline-light btn-sm ms-auto" %>
+          class: "btn btn-outline-light btn-sm ms-auto me-3" %>
       <% else %>
-        <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-light ms-auto" %>
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-light ms-auto me-3" %>
       <% end %>
     </div>
   </div>
