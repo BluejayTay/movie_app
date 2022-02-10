@@ -1,30 +1,29 @@
-<div class="container">
-  <h1 class="text-center mb-3 pt-5">Your Reviews</h1>
+<div class="container mb-5">
+  <h1 class="text-center my-5">Your Reviews</h1>
   <% @reviews.each do |r|%>
-    <div class="card bg-dark mb-5 mx-auto" style="max-width: 900px">
+    <div class="card bg-dark mb-5 mx-auto" style="max-width: 900px;">
       <div class="card-header d-flex justify-content-between align-items-center" style="background-color:black;font-weight:400;"> 
       <div class="text-white m-0 p-0 text-uppercase" ><%= r.movie.name %></div>
-      <div><%= link_to "See details", movie_path(r.movie.api_id), class: "btn btn-outline-info btn-sm"%></div>
       </div>
       <div class="row g-0">
-            <div class="col-md-4 col-lg-3">
+        <div class="col-md-5 col-lg-3">
           <img src="https://image.tmdb.org/t/p/original<%= r.movie.image_url %>" class="img-fluid" alt="Poster image">
         </div>
-        <div class="col-md-8 col-lg-9 bg-light">
-          <h4 class="card-text p-3 my-0"><%= r.rating %>/10</h4>
-          <p class="card-text pt-0 mt-0 mb-0 px-3 pb-3"><%= r.content%></p> 
-          <p class="px-3">Posted on: <%= r.created_at.month%>-<%= r.created_at.day%>-<%= r.created_at.year%></p>
+        <div class="col-md-7 col-lg-9 bg-light p-3">
+          <h4 class="card-text my-0"><%= r.rating %>/10</h4>
+          <p class="card-text mx-4 mt-1 mb-2"><%= r.content%></p> 
+          <p class="card-text text-muted ms-4">Posted on: <%= r.created_at.month%>-<%= r.created_at.day%>-<%= r.created_at.year%></p>
         </div>
       </div>
 
-      <div class="card-footer d-flex justify-content-end align-items-center py-2 bg-light" style="background-color:black">
-        
+      <div class="card-footer bg-dark d-flex justify-content-between align-items-center py-2" style="background-color:black">
+        <div><%= link_to "Movie Info", movie_path(r.movie.api_id), class: "btn btn-outline-info btn-sm"%></div>
         <div class="btn-group">
-          <%= link_to "Edit", edit_review_path(r.id), class: "btn btn-secondary btn-sm px-3"%>
+          <%= link_to "Edit", edit_review_path(r.id), class: "btn btn-outline-light btn-sm px-3"%>
           <%= link_to "Delete", review_path(r.id),
                             method: :delete,
                             data: {confirm: "Are you sure?"}, 
-                            class: "btn btn-danger btn-sm px-3"%>
+                            class: "btn btn-outline-danger btn-sm px-3"%>
         </div>
       </div>
     </div>
