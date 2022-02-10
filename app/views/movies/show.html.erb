@@ -1,10 +1,10 @@
-<div class="container my-5">
+<div class="container mb-5">
   <div class="row g-0">
-    <div class="card mb-3 border-dark shadow-lg mx-auto" style="max-width:900px">
+    <div class="card my-5 border-dark shadow-lg mx-auto" style="max-width:900px;">
       <div class="row g-0">
         <div class="col-md-6 bg-dark">
           <img class="img-fluid rounded-top " src="https://image.tmdb.org/t/p/original<%= @movie['poster_path']%>" alt="Poster image">
-          <div class="card-footer text-end flush" style="background-color:black;"> 
+          <div class="card-footer text-center flush" style="background-color:black;"> 
             <% m = current_user.movies.find_by(api_id: @movie["id"])%>
             <% if m.present? %>
               <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
@@ -20,21 +20,20 @@
           </div>
         </div>
         <div class="col-md-6 bg-white rounded">
-          <div class="card-header">
-            <h1 class="text-center m-0 p-2 "><%=@movie["title"] %></h1>
-            <h5 class="text-center m-0 pb-2 "><%=@movie["tagline"] %> </h5>
+          <div class="card-header p-1">
+            <h2 class="text-center m-0 pt-2 "><%=@movie["title"] %></h2>
+            <h6 class="text-center m-0 py-2 "><%=@movie["tagline"] %> </h6>
           </div>
           <div class="card-body rounded-end p-0">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (<%=@movie["vote_count"] %> votes)</li>
-              <li class="list-group-item"><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</li>
-              <li class="list-group-item"><strong>Status:</strong> <%=@movie["status"] %></li>
-              <li class="list-group-item d-flex justify-content-between"><div><strong>Release date:</strong> <%=@movie["release_date"][5..6]%>/<%=@movie["release_date"][8..9]%>/<%=@movie["release_date"][0..3]%></div>
-              <% if @movie["homepage"].present? %>
-                  <a href='<%=@movie["homepage"] %>'>Website</a>
-                <% end %></li>
+              <li class="list-group-item py-1"><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (<%=@movie["vote_count"] %> votes)</li>
+              <li class="list-group-item py-1"><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</li>
+              <li class="list-group-item py-1"><div><strong>Status:</strong> <%=@movie["status"] %></li>
+             <li class="list-group-item py-1"><strong>Release date:</strong> <%=@movie["release_date"][5..6]%>-<%=@movie["release_date"][8..9]%>-<%=@movie["release_date"][0..3]%></li>
               <li class="list-group-item rounded-bottom"><strong>Overview:</strong> <%=@movie["overview"] %><br>
-                
+                 <% if @movie["homepage"].present? %>
+                  <a href='<%=@movie["homepage"] %>'>Website</a>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -44,7 +43,7 @@
   </div>
 
   <div class="row g-0">
-    <div class="card mx-auto bg-light border-dark rounded-bottom " style="max-width:900px">
+    <div class="card mx-auto bg-light border-dark rounded-bottom shadow-lg" style="max-width:900px">
       <div class="card-header p-0 text-center">
         <h3 class="p-3 m-0">Reviews for <%=@movie["title"]%></h3>
       </div>
@@ -56,31 +55,33 @@
               <ul class="list-group list-group-flush">
                 <% m.reviews.each do |review|%>
                 <li class="list-group-item bg-light">
-                  <h6 class=""><%= review.user.username%> on <%= review.created_at.month%>-<%= review.created_at.day%>-<%= review.created_at.year%>:</h6>
-                  <span class=""><%= review.rating%>/10: <%= review.content%></span>
+                  <p class="mb-1"><strong><%= review.user.username%></strong> on <%= review.created_at.month%>-<%= review.created_at.day%>-<%= review.created_at.year%>:</p>
+                  <span class="pt-0"><%= review.rating%>/10: <%= review.content%></span>
                 </li>
                 <% end %>
               </ul>
               <% else%>
-                <p>No reviews yet</p>
+                <p class="p-3 text-center">No reviews yet</p>
               <% end %>
             <% else%>
-              <p>No reviews yet</p>
+              <p class="p-3 text-center">No reviews yet</p>
             <% end %>
             
             
           
         </div>
-        <div class="col-md-6 bg-light rounded-bottom">
-            <h4 class="p-3 m-0">Write a Review</h4>
+        <div class="col-md-6 bg-white rounded-bottom">
+            <h3 class="text-center m-3">Write a Review</h3>
             <div class="px-3 pt-0 m-0">
               <%= simple_form_for Review.new do |f| %>
                 <%= f.hidden_field :api_id, value: @movie["id"] %>
                 <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
                 <%= f.hidden_field :name, value: @movie["title"] %> 
-                <%= f.input :rating, collection: 0..10 %>
                 <%= f.input :content %>
-                <%= f.button :submit, "Submit", class: "btn btn-primary my-3"%> 
+                <div class="d-flex justify-content-start align-items-end my-3">
+                <%= f.input :rating, collection: 0..10, class:"my-3"%>
+                <%= f.button :submit, "Submit", class: "btn btn-dark ms-3"%> 
+                </div>
               <% end %>
             </div>
         </div>
