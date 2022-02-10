@@ -1,7 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <h2>Log in</h2>
+<div class="container mb-5">
+  
+  <div class="row mt-5">
+    <div class="col mx-auto" style="max-width:500px;">
+      <h1>Log in</h1>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">
@@ -16,7 +17,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Log in" %>
+            <%= f.button :submit, "Log in", class:"btn btn-primary my-3" %>
           </div>
         <% end %>
 
