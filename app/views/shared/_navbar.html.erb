@@ -1,21 +1,24 @@
-<nav class="navbar navbar-expand-sm navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-3" href="/"><%= image_pack_tag "media/images/Groovie_Logo.png", size: "55x55", alt: "Groovie Icon"%>Groovie</a>
+<nav class="navbar navbar-expand-sm navbar-dark p-0">
+  <div class="container-fluid d-flex align-content-center px-3 py-1"><%= image_pack_tag "media/images/Groovie_Logo.png", size: "42x46", alt: "Groovie Icon"%>
+    <a class="navbar-brand me-auto m-0 pe-2 p-0" href="/">Groovie</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <div class="navbar-nav mb-3 mb-sm-0">
+      <div class="navbar-nav py-1">
         <%= link_to "Watch List", watch_list_movies_path, class: "nav-link" %>
         <%= link_to "Reviews", reviews_path, class: "nav-link" %>  
-        <%= link_to "Search", movies_search_path, class: "nav-link" %>
+        <%= link_to "Movies", movies_search_path, class: "nav-link" %>
       </div>
-      <% if user_signed_in? %>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}, 
-          class: "btn btn-outline-light btn-sm ms-auto me-3" %>
-      <% else %>
-        <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-light ms-auto me-3" %>
-      <% end %>
+      <div class="btn-group ms-auto px-0 py-2">
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}, 
+            class: "btn btn-outline-light btn-sm ms-auto" %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-light btn-sm" %>
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-light btn-sm" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
