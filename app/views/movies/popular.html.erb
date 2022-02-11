@@ -1,9 +1,9 @@
 <div class="container mb-5">
   <h1 class="text-center my-5">Popular Movies</h1>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
   <% @movies.each do |movie| %>
     <div class="col">
-      <div class="card bg-dark shadow-sm h-100">
+      <div class="card bg-dark shadow-sm h-100" style="min-width:225px">
          
         <div class="card-body text-white" style="background-color:black; font-weight:400;">
           <div class="row p-0 g-0">
@@ -15,17 +15,21 @@
         
         <div class="card-footer d-flex justify-content-center p-3" style="background-color:#151616;">
             <%= link_to "Movie Info", movie_path(movie["id"]), class: "btn btn-outline-info btn-sm me-3"%>
-            <% m = current_user.movies.find_by(api_id: movie["id"])%>
-            <% if m.present? %>
-              <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
-              <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger"%>
-            <% else %>
-              <%= form_with(model: current_user.watch_list_movies.build) do |f| %>
-                <%= f.hidden_field :api_id, :value => movie["id"] %>
-                <%= f.hidden_field :image_url, :value => movie["poster_path"] %>
-                <%= f.hidden_field :name, :value => movie["title"] %> 
-                <%= f.submit "+ Watchlist", class: "btn btn-outline-primary btn-sm" %>
+            <% if user_signed_in? %>
+              <% m = current_user.movies.find_by(api_id: movie["id"])%>
+              <% if m.present? %>
+                <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
+                <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
+              <% else %>
+                <%= form_with(model: current_user.watch_list_movies.build) do |f| %>
+                  <%= f.hidden_field :api_id, :value => movie["id"] %>
+                  <%= f.hidden_field :image_url, :value => movie["poster_path"] %>
+                  <%= f.hidden_field :name, :value => movie["title"] %> 
+                  <%= f.submit "+ Watchlist", class: "btn btn-outline-primary btn-sm" %>
+                <% end %>
               <% end %>
+            <% else %>
+              <%= link_to "+ Watchlist", watch_list_movies_path, method: :post, class: "btn btn-sm btn-outline-primary"%>
             <% end %>
         </div>
       </div>
