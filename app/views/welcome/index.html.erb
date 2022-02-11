@@ -1,3 +1,89 @@
-<div class="container">
-  <p>Test</p>
+<div class="container-fluid p-0">
+  <div id="hero" class="py-3 text-center d-flex justify-content-center align-items-center">
+    <div class="row ">
+      <% if user_signed_in? %>
+      <div class="col">
+        <h1>Welcome, <%= current_user.username %>!</h1>
+      </div>
+      <% else %>
+      <div class="col-sm-6">
+        <h1>Welcome to</h1>
+        <div class="d-flex justify-content-center align-items-center">
+          <%= image_pack_tag "media/images/Groovie_Logo.png", size: "75x81", alt: "Groovie Icon"%>
+          <span id="brand">Groovie</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h4>THE place to find your next favorite movie!</h4>
+        <%= link_to "Explore Movies", movies_search_path, class: "btn btn-lg mb-3 groovie-btn"%>
+      </div>
+    <%end%>
+    </div>
+  </div>
+</div>
+<div id="landing-info"class="container-fluid p-3">
+  <div class="row text-center row-cols-1 row-cols-sm-3">
+    <div class="col">
+      <h4>Over 700,000 Titles</h4>
+      <h6>Browse our extensive collection and discover top-rated and trending movies.</h6>
+    </div>
+    <div class="col">
+      <h4>Curate Your Watchlist</h4>
+      <h6>Easily add any movie to your personal watchlist and organize them by priority.</h6>
+    </div>
+    <div class="col">
+      <h4>Post Movie Reviews</h4>
+      <h6>Share your thoughts on any film by rating and reviewing them for others to see! </h6>
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-light py-3">
+  <div class="row ">
+    <div class="col mx-auto" style="max-width:600px;">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= image_pack_tag "media/images/Movie_night.jpg", class:"d-block w-100", alt: "Couple watching a movie"%>
+            <div class="carousel-caption d-block">
+              <h3>Host a Movie Night</h3>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_pack_tag "media/images/Movie_theater.jpg", class:"d-block w-100", alt: "Watching a movie in theater"%>
+            <div class="carousel-caption d-block">
+              <h3>Go to the Theater</h3>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_pack_tag "media/images/Watch_solo.jpg", class:"d-block w-100", alt: "Person watching movie at home"%>
+            <div class="carousel-caption d-block">
+              <h3>Unwind at Home</h3>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-3 p-3 mx-auto">
+  <div class="row">
+    <div class="card" style="background-color:black;">
+      <div class="card-body text-white d-flex justify-content-center align-items-center">It's free and easy to use - Sign up today!
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg ms-3 groovie-btn"%>
+      </div>
+    </div>
+  </div>
 </div>
