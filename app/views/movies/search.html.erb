@@ -1,12 +1,12 @@
 
 <div class="container my-5">
-  <h1 class="text-center mt-3 mb-5">Explore Movies</h1>
+  <h1 class="text-center mt-3 mb-5">Search Movies</h1>
   <div class="row text-center">
     <div class="col mx-auto text-center p-0" style="max-width:500px;">
       <h5>Discover Well-Liked Movies:</h5>
       <div class="my-3">
-        <%= link_to "Popular Movies", movies_popular_path, class: "btn btn-info mx-2 my-1"%>
-        <%= link_to "Top-Rated Movies", movies_top_rated_path, class: "btn btn-info mx-2 my-1"%>
+        <%= link_to "Popular Movies", movies_popular_path, class: "btn mx-2 my-1 groovie-btn"%>
+        <%= link_to "Top-Rated Movies", movies_top_rated_path, class: "btn mx-2 my-1 groovie-btn"%>
       </div>
   
    
@@ -15,7 +15,7 @@
         <form id="search_form" action="/movies/search_by_title">
           <div class="d-flex mx-2">
             <input type="text" class="form-control" id="search_input" name = "name" placeholder="e.g., Dune">
-            <button type="submit" id="submit-btn" class="btn btn-info">Search</button> 
+            <button type="submit" id="submit-btn" class="btn groovie-btn">Search</button> 
           </div>
         </form>
       </div>
