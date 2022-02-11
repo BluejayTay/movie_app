@@ -22,16 +22,16 @@ footer {
 }
 
 #hero {
-  background-color: #c1df7c;
+  background-color: black;
   color:white;
-  padding: 0px 50px
+  padding: 0px 50px;
 }
 #brand {
 font-family: "Spicy Rice", sans-serif;
 font-size: 52px;
 }
 #landing-info {
-  background-color: #000000;
+  background-color: #c1df7c;
 }
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";
