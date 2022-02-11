@@ -19,3 +19,6 @@
     "webpack-dev-server": "^3"
   }
 }
+"scripts": {
+  "postinstall": "npm rebuild node-sass"
+}
