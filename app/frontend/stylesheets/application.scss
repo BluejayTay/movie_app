@@ -22,7 +22,7 @@ footer {
 }
 
 #hero {
-  background-color: black;
+  background-color: #c1df7c;
   color:white;
   padding: 0px 50px
 }
@@ -30,7 +30,9 @@ footer {
 font-family: "Spicy Rice", sans-serif;
 font-size: 52px;
 }
-
+#landing-info {
+  background-color: #000000;
+}
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";
 
