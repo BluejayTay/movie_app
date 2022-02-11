@@ -53,7 +53,7 @@
       </div>
       <div class="row g-0 ">
         <div class="col-md-6 rounded-bottom m-0">
-            <% m = Movie.find_by(api_id: @movie["id"])%>
+        <% m = Movie.find_by(api_id: @movie["id"]) %>
             <% if m.reviews.present? %>
               <ul class="list-group list-group-flush">
                 <% m.reviews.each do |review|%>
@@ -90,7 +90,7 @@
           <%end%>
           <%else%>
           <p class="text-center">Sign in to write a review!</p>
-                    <%= link_to "Log in", new_user_session_path, class: "btn btn-outline-light btn-sm" %>
+                    
 
           <%end%>
         </div>
