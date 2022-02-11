@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!
   
   def show
     @movie = MovieService.find_by_api_id(params["id"])
@@ -28,7 +27,7 @@ class MoviesController < ApplicationController
     render "search"
   end
   
-  #def search_results
-  #end
+  def search_results
+  end
   
 end
