@@ -1,10 +1,11 @@
+
 #page-container {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 10rem;
+  padding: 0rem 0rem 10rem 0rem;
 }
 
 #footer {
@@ -20,17 +21,26 @@ footer {
   text-align: center;
 }
 
-.signup {
-  color:#000000;
-  background-color: #b3e5e9;
+#hero {
+  background-color: black;
+  color:white;
+  padding: 0px 50px
+}
+#brand {
+font-family: "Spicy Rice", sans-serif;
+font-size: 52px;
 }
 
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";
 
+.groovie-btn {
+  background-color:#672d91;
+  color:#c1df7c;
+}
 .navbar-brand {
   font-family: "Spicy Rice", sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   color: #ffffff;
 }
 
