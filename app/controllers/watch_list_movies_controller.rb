@@ -11,22 +11,22 @@ class WatchListMoviesController < ApplicationController
 
   def create
     movie = Movie.find_or_create_by(movie_params)
-    current_user.add_to_watchlist(movie)
+    current_user.add_to_watchlist(movie) 
 
     respond_to do |format|
-        format.html
-        format.json
+      format.html
+      format.json
     end
 
     flash[:notice] = "Movie successfully added to your watchlist!"
-    redirect_to movie_path(id: movie.api_id)
+    redirect_back(fallback_location: watch_list_movies_path(user_id: current_user.id))
   end
 
   def update
     @watch_list_movie = WatchListMovie.find(params[:id])
 
     if @watch_list_movie.update(watch_list_movie_params)
-      redirect_to watch_list_movies_path
+      redirect_back(fallback_location: root_path)
     end
   end
   
@@ -34,7 +34,7 @@ class WatchListMoviesController < ApplicationController
     @watch_list_movie = WatchListMovie.find(params[:id])
     @watch_list_movie.destroy
     flash[:notice] = "Movie successfully removed from watchlist!"
-    redirect_to watch_list_movies_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

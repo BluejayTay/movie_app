@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @reviews = current_user.reviews
+    @reviews = current_user.reviews.order(created_at: :desc)
   end
 
   def new
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
       format.json
     end
 
-    redirect_to movie_path(id: @movie.api_id)
+    redirect_back(fallback_location: movie_path(id: @movie.api_id))
   end
 
   def edit
