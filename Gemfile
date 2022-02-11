@@ -22,17 +22,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'simple_form'
+gem 'devise'
+gem 'figaro'
+gem 'httparty', '~> 0.13.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-# added gems 
-gem 'simple_form'
-gem 'devise'
-gem 'figaro'
-gem 'httparty', '~> 0.13.7'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
