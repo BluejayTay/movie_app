@@ -54,18 +54,23 @@
       <div class="row g-0 ">
         <div class="col-md-6 rounded-bottom m-0">
         <% m = Movie.find_by(api_id: @movie["id"]) %>
-            <% if m.reviews.present? %>
-              <ul class="list-group list-group-flush">
-                <% m.reviews.each do |review|%>
-                <li class="list-group-item bg-light">
-                  <p class="mb-1"><strong><%= review.user.username%></strong> on <%= review.created_at.month%>-<%= review.created_at.day%>-<%= review.created_at.year%>:</p>
-                  <span class="pt-0"><%= review.rating%>/10: <%= review.content%></span>
-                </li>
-                <% end %>
-              </ul>
-            <% else%>
-              <p class="p-3 text-center">No reviews yet</p>
+            <% if m.present? %>
+              <% if m.reviews.present?%>
+                <ul class="list-group list-group-flush">
+                  <% m.reviews.each do |review|%>
+                  <li class="list-group-item bg-light">
+                    <p class="mb-1"><strong><%= review.user.username%></strong> on <%= review.created_at.month%>-<%= review.created_at.day%>-<%= review.created_at.year%>:</p>
+                    <span class="pt-0"><%= review.rating%>/10: <%= review.content%></span>
+                  </li>
+                  <% end %>
+                </ul>
+              <% else%>
+                <p class="p-3 text-center">No reviews yet</p>
+              <% end %>
+            <%else%>
+            <p class="p-3 text-center">No reviews yet</p>
             <% end %>
+
         </div>
         <div class="col-md-6 bg-white rounded-bottom p-3">
           <h3 class="text-center m-3">Write a Review</h3> 
