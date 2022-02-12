@@ -11,7 +11,7 @@
             <div class="col-10 pl-0 text-end text-uppercase"><%= movie["title"] %></div>
           </div>
         </div>
-        <img class="card-img-flush" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Card image">
+        <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Card image">
         
         <div class="card-footer d-flex justify-content-center p-3" style="background-color:#151616;">
             <%= link_to "Movie Info", movie_path(movie["id"]), class: "btn btn-outline-info btn-sm me-3"%>
