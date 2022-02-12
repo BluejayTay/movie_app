@@ -11,7 +11,7 @@
          <% if movie["backdrop_path"].present? %>
             <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Movie image">
           <%else %>
-            <%= image_pack_tag "media/images/Sad_cat.jpg", alt: "Sad cat"%>
+            <%= image_pack_tag "media/images/Sad_cat.jpg", alt: "Sad cat", class:"img-fluid"%>
           <%end%>      
         <div class="card-footer d-flex justify-content-center py-3" style="background-color:#151616;">
             <%= link_to "Movie Info", movie_path(movie["id"]), class: "btn btn-outline-info btn-sm me-3"%>
