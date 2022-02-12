@@ -9,7 +9,7 @@
           <div class="align-bottom p-0 text-uppercase"><%= movie["title"] %></div>
         </div>
          <% if movie["backdrop_path"].present? %>
-            <img class="card-img-flush" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Movie image">
+            <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Movie image">
           <%else %>
             <%= image_pack_tag "media/images/Sad_cat.jpg", alt: "Sad cat"%>
           <%end%>      
