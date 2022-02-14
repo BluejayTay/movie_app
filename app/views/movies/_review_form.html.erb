@@ -1,0 +1,11 @@
+<!--For creating review on movies/show view-->
+<%= simple_form_for Review.new do |f| %>
+  <%= f.hidden_field :api_id, value: @movie["id"] %>
+  <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
+  <%= f.hidden_field :name, value: @movie["title"] %> 
+  <%= f.input :content %>
+  <div class="d-flex justify-content-start align-items-end my-3">
+    <%= f.input :rating, collection: 0..10, class:"my-3"%>
+    <%= f.button :submit, "Submit", class: "btn btn-dark ms-3"%> 
+  </div>
+<% end %>

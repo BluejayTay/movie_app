@@ -1,0 +1,6 @@
+<%= simple_form_for current_user.watch_list_movies.build do |f| %>
+  <%= f.hidden_field :api_id, :value => movie["id"] %>
+  <%= f.hidden_field :image_url, :value => movie["poster_path"] %>
+  <%= f.hidden_field :name, :value => movie["title"] %> 
+  <%= f.submit "+ Watchlist", class: "btn btn-outline-primary btn-sm" %>
+<% end %>

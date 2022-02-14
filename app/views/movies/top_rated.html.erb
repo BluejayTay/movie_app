@@ -4,7 +4,6 @@
   <% @movies.each do |movie| %>
     <div class="col">
       <div class="card bg-dark shadow-sm h-100" style="min-width:225px">
-         
         <div class="card-body text-white" style="background-color:black; font-weight:400;">
           <div class="row p-0 g-0">
             <div class="col-2 pr-0 text-start"><%=(@movies.index(movie)) + 1%>.</div>
@@ -12,7 +11,6 @@
           </div>
         </div>
         <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Card image">
-        
         <div class="card-footer d-flex justify-content-center p-3" style="background-color:#151616;">
             <%= link_to "Movie Info", movie_path(movie["id"]), class: "btn btn-outline-info btn-sm me-3"%>
             <% if user_signed_in? %>
@@ -21,12 +19,7 @@
                 <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
                 <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
               <% else %>
-                <%= form_with(model: current_user.watch_list_movies.build) do |f| %>
-                  <%= f.hidden_field :api_id, :value => movie["id"] %>
-                  <%= f.hidden_field :image_url, :value => movie["poster_path"] %>
-                  <%= f.hidden_field :name, :value => movie["title"] %> 
-                  <%= f.submit "+ Watchlist", class: "btn btn-outline-primary btn-sm" %>
-                <% end %>
+                <%= render "shared/add_to_watchlist", movie: movie %>
               <% end %>
             <% else %>
               <%= link_to "+ Watchlist", watch_list_movies_path, method: :post, class: "btn btn-sm btn-outline-primary"%>

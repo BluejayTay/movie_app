@@ -11,12 +11,7 @@
               <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
               <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
             <% else %>
-              <%= form_with(model: current_user.watch_list_movies.build) do |f| %>
-                <%= f.hidden_field :api_id, :value => @movie["id"] %>
-                <%= f.hidden_field :image_url, :value => @movie["poster_path"] %>
-                <%= f.hidden_field :name, :value => @movie["title"] %> 
-                <%= f.submit "+ Watchlist", class: "btn btn-outline-primary btn-sm" %>
-              <% end %>
+              <%= render "shared/add_to_watchlist", movie: @movie %>
             <% end %>
           <% else %>
             <%= link_to "+ Watchlist", watch_list_movies_path, method: :post, class: "btn btn-sm btn-outline-primary"%>
@@ -81,30 +76,12 @@
                   <p class="text-center">You already wrote a review for this movie!</p>
                 <% else %>
                   <div class="px-3 pt-0 m-0">
-                    <%= simple_form_for Review.new do |f| %>
-                      <%= f.hidden_field :api_id, value: @movie["id"] %>
-                      <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
-                      <%= f.hidden_field :name, value: @movie["title"] %> 
-                      <%= f.input :content %>
-                      <div class="d-flex justify-content-start align-items-end my-3">
-                        <%= f.input :rating, collection: 0..10, class:"my-3"%>
-                        <%= f.button :submit, "Submit", class: "btn btn-dark ms-3"%> 
-                      </div>
-                    <% end %>
+                    <%= render "review_form", movie: m %>
                   </div>
                 <% end %> 
               <%else%>
                 <div class="px-3 pt-0 m-0">
-                  <%= simple_form_for Review.new do |f| %>
-                    <%= f.hidden_field :api_id, value: @movie["id"] %>
-                    <%= f.hidden_field :image_url, value: @movie["poster_path"] %>
-                    <%= f.hidden_field :name, value: @movie["title"] %> 
-                    <%= f.input :content %>
-                    <div class="d-flex justify-content-start align-items-end my-3">
-                      <%= f.input :rating, collection: 0..10, class:"my-3"%>
-                      <%= f.button :submit, "Submit", class: "btn btn-dark ms-3"%> 
-                    </div>
-                  <% end %>
+                  <%= render "review_form", movie: @movie %>
                 </div>
               <%end%>
           <%else%>
