@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :reviews
   has_many :watch_list_movies
@@ -8,7 +10,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def add_to_watchlist(movie)
-    self.watch_list_movies.create(user_id: self.id, movie_id: movie.id, priority: 3)
+    watch_list_movies.create(user_id: id, movie_id: movie.id, priority: 3)
   end
-  
 end

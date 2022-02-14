@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
@@ -12,10 +14,10 @@ class ReviewsController < ApplicationController
 
   def create
     @movie = Movie.find_or_create_by(movie_params)
-    
+
     review_creation_params = review_params.merge(user_id: current_user.id, movie_id: @movie.id)
     Review.create!(review_creation_params)
-    
+
     respond_to do |format|
       format.html
       format.json
@@ -30,22 +32,22 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    
+
     if @review.update(review_params)
-      flash[:notice] = "Review successfully edited!"
+      flash[:notice] = 'Review successfully edited!'
       redirect_to reviews_path
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    flash[:notice] = "Review successfully deleted!"
+    flash[:notice] = 'Review successfully deleted!'
     redirect_to reviews_path
   end
-  
+
   private
 
   def movie_params
@@ -55,5 +57,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:content, :rating)
   end
-  
 end

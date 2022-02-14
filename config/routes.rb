@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :reviews
-  resources :watch_list_movies #only needed routes
+  resources :watch_list_movies # only needed routes
   get 'movies/popular'
   get 'movies/search_by_title'
   get 'movies/search_results'
