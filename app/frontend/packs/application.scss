@@ -41,8 +41,15 @@ font-size: 52px;
 
 #landing-carousel {
   background-color: #c1df7c;
+  max-width: 550px;
+  margin: 0px auto;
 }
 
+#landing-signup {
+  background-color:black;
+  color:white;
+  margin: 0px;
+}
 .groovie-btn {
   background-color:#672d91;
   color:#c1df7c;
