@@ -27,7 +27,7 @@
         </div>
         <div class="card-footer d-flex justify-content-center py-3" style="background-color:#151616;">
           <%= link_to "Movie Info", movie_path(wlm.movie.api_id), class: "btn btn-outline-info me-3"%>
-          <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger"%>
+          <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, class: "btn btn-outline-danger"%>
         </div>
       </div>
     </div>
