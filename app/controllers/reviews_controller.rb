@@ -2,6 +2,7 @@
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_review, only: [:edit, :update, :destroy]
 
   def index
     @reviews = current_user.reviews.order(created_at: :desc)
@@ -27,12 +28,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
   end
 
   def update
-    @review = Review.find(params[:id])
-
     if @review.update(review_params)
       flash[:notice] = 'Review successfully edited!'
       redirect_to reviews_path
@@ -42,13 +40,16 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = 'Review successfully deleted!'
     redirect_to reviews_path
   end
 
   private
+  
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
   def movie_params
     params.require(:review).permit(:api_id, :name, :image_url)
