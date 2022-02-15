@@ -1,6 +1,6 @@
 # Groovie
 
-Groovie is an app for discovering movies using The Movie Database API. Users can see top-rated movies, popular movies, or search by title. Once a user logs in, they can  access the Watchlist and Review features of Groovie. Watchlists are edited by adding or removing movies via the ubiqutous "- Watchlist" and "+ Watchlist" buttons, and are sorted by each movie's priority level(Low, Medium, High) that can be changed by the user at any time in their "Watchlist" section. Reviews are composed and posted directly on the movie's info page to be shared with others and can be edited/removed by the user in their "Reviews" section.
+Groovie is an app for discovering movies using The Movie Database API. Users can see top-rated movies, popular movies, or search by title. Once a user logs in, they can  access the Watchlist and Review features of Groovie. Watchlists are edited by adding or removing movies via the ubiqutous "- Watchlist" and "+ Watchlist" buttons. Watchlists are sorted by each movie's priority level(Low, Medium, High), which can be changed by the user in their "Watchlist" section. Reviews are composed and posted directly on the movie's info page to be shared with others and can be edited/removed by the user.
 
 See the [deployed app](https://evening-peak-95794.herokuapp.com)
 
