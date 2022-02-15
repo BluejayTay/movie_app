@@ -1,19 +1,19 @@
 <div class="container-fluid p-0">
-  <div id="hero" class="py-3 text-center d-flex justify-content-center align-items-center">
-    <div class="row">
+  <div id="hero" class="text-center d-flex justify-content-center align-items-center">
+    <div class="row py-5">
       <% if user_signed_in? %>
-      <div class="col">
-        <h1 class="py-3">Welcome, <%= current_user.username %>!</h1>
+      <div class="col py-3">
+        <h1>Welcome, <%= current_user.username %>!</h1>
       </div>
       <% else %>
-      <div class="col-sm-6 py-3">
+      <div class="col-sm-6 pt-4">
         <h1>Welcome to</h1>
         <div class="d-flex justify-content-center align-items-center">
           <%= image_pack_tag "media/images/Groovie_Logo.png", size: "75x81", alt: "Groovie Icon"%>
           <span id="brand">Groovie</span>
         </div>
       </div>
-      <div class="col-sm-6 py-3">
+      <div class="col-sm-6 pt-4">
         <h4>THE place to find your next favorite movie!</h4>
         <%= link_to "Explore Movies", movies_search_path, class: "btn btn-lg mb-3 groovie-btn"%>
       </div>
@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<div id="landing-info" class="container-fluid px-3 py-5">
+<div id="landing-info" class="container-fluid px-3">
   <div class="row text-center row-cols-1 row-cols-sm-3">
     <div class="col">
       <h4>Over 700,000 Titles</h4>
@@ -37,7 +37,7 @@
     </div>
   </div>
 </div>
-<div class="container-fluid p-5">
+<div class="container-fluid p-3">
   <div class="row">
     <div class="col">
       <div id="landing-carousel" class="carousel slide" data-bs-ride="carousel">

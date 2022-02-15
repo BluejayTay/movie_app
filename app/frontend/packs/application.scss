@@ -27,7 +27,7 @@ footer {
 #hero {
   background-color: black;
   color:white;
-  padding: 0px 50px;
+  padding: 0px;
 }
 
 #brand {
@@ -36,7 +36,10 @@ font-size: 52px;
 }
 
 #landing-info {
-  background-color: #ffffff;
+  background-image: linear-gradient(rgb(0, 0, 0),#4a4e40, #c1df7c);
+  padding-top:0px;
+  padding-bottom:75px;
+  color:white;
 }
 
 #landing-carousel {
