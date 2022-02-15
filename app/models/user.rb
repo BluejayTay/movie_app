@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates_uniqueness_of :username
 
   def add_to_watchlist(movie)
     watch_list_movies.create(user_id: id, movie_id: movie.id, priority: 3)
