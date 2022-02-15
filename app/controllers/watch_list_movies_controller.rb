@@ -14,24 +14,33 @@ class WatchListMoviesController < ApplicationController
 
   def create
     movie = Movie.find_or_create_by(movie_params)
-    current_user.add_to_watchlist(movie)
 
-    respond_to do |format|
-      format.html
-      format.json
+    if current_user.add_to_watchlist(movie)
+      flash[:notice] = 'Movie successfully added to your watchlist!'
+    else
+      flash[:alert] = 'Hmm, something went wrong. Please try again.'
     end
 
-    flash[:notice] = 'Movie successfully added to your watchlist!'
     redirect_back(fallback_location: watch_list_movies_path(user_id: current_user.id))
   end
 
   def update
-    redirect_back(fallback_location: root_path) if @watch_list_movie.update(watch_list_movie_params)
+    if @watch_list_movie.update(watch_list_movie_params)
+      flash[:notice] = 'Movie successfully updated in watchlist!'
+    else
+      flash[:alert] = 'Update unsuccessful. Please make sure a priority level is selected and try again.'
+    end
+
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    @watch_list_movie.destroy
-    flash[:notice] = 'Movie successfully removed from watchlist!'
+    if @watch_list_movie.destroy
+      flash[:notice] = 'Movie successfully removed from watchlist!'
+    else
+      flash[:alert] = 'Removing from watchlist was unsuccessful. Please try again.'
+    end
+
     redirect_back(fallback_location: root_path)
   end
 
