@@ -4,19 +4,6 @@
       <div class="row g-0">
         <div class="col-md-6 bg-dark">
           <img class="img-fluid rounded-top " src="https://image.tmdb.org/t/p/original<%= @movie['poster_path']%>" alt="Poster image">
-          <div class="card-footer text-center flush" style="background-color:black;"> 
-            <% if user_signed_in? %>
-              <% watch_listed_movie = current_user.movies.find_by(api_id: @movie["id"])%>
-              <% if watch_listed_movie.present? %>
-                <% watch_list_movie = current_user.watch_list_movies.find_by(movie_id: watch_listed_movie.id)%>
-                <%= link_to "- Watchlist", watch_list_movie_path(watch_list_movie.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
-              <% else %>
-                <%= render "shared/add_to_watchlist", movie: @movie %>
-              <% end %>
-            <% else %>
-              <%= link_to "+ Watchlist", watch_list_movies_path, method: :post, class: "btn btn-sm btn-outline-primary"%>
-            <% end %>
-          </div>
         </div>
         <div class="col-md-6 bg-white rounded">
           <div class="card-header p-1">
@@ -24,18 +11,38 @@
             <h6 class="text-center m-0 py-2 "><%=@movie["tagline"] %> </h6>
           </div>
           <div class="card-body rounded-end p-0">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush mb-1">
               <li class="list-group-item py-1"><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (<%=@movie["vote_count"] %> votes)</li>
               <li class="list-group-item py-1"><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</li>
-              <li class="list-group-item py-1"><strong>Status:</strong> <%=@movie["status"] %></li>
-              <li class="list-group-item py-1"><strong>Release date:</strong> <%=@movie["release_date"][5..6]%>-<%=@movie["release_date"][8..9]%>-<%=@movie["release_date"][0..3]%></li>
-              <li class="list-group-item rounded-bottom">
-                <strong>Overview:</strong> <%=@movie["overview"] %><br>
+              <li class="list-group-item py-1 d-flex justify-content-between"><div><strong>Release date:</strong> <%=@movie["release_date"][5..6]%>-<%=@movie["release_date"][8..9]%>-<%=@movie["release_date"][0..3]%></div>
                 <% if @movie["homepage"].present? %>
-                  <a href='<%=@movie["homepage"] %>'>Website</a>
+                  <div>
+                    <a href='<%=@movie["homepage"] %>'>Website</a>
+                  </div>
                 <% end %>
               </li>
+              <li class="list-group-item rounded-bottom">
+                <strong>Overview:</strong> <%=@movie["overview"] %>
+              </li>
             </ul>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center" style="background-color:black;"> 
+          <div>
+          <% if user_signed_in? %>
+            <% watch_listed_movie = current_user.movies.find_by(api_id: @movie["id"])%>
+            <% if watch_listed_movie.present? %>
+              <% watch_list_movie = current_user.watch_list_movies.find_by(movie_id: watch_listed_movie.id)%>
+              <%= link_to "- Watchlist", watch_list_movie_path(watch_list_movie.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
+            <% else %>
+              <%= render "shared/add_to_watchlist", movie: @movie %>
+            <% end %>
+          <% else %>
+            <%= link_to "+ Watchlist", watch_list_movies_path, method: :post, class: "btn btn-sm btn-outline-primary"%>
+          <% end %>
+          </div>
+          <div>
+            <%= link_to "Recommended Movies", movies_recommended_movies_path(api_id: @movie['id'], name: @movie["title"]), class: "btn btn-sm groovie-btn ms-3"%>
           </div>
         </div>
       </div>

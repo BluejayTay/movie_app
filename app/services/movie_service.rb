@@ -16,6 +16,11 @@ class MovieService
     response['results']
   end
 
+  def self.recommendations(api_id)
+    response = HTTParty.get("https://api.themoviedb.org/3/movie/#{api_id}/recommendations?api_key=#{ENV['TMDB_api_key']}&language=en-US&page=1")
+    response['results']
+  end
+
   def self.find_by_api_id(api_id)
     response = HTTParty.get("https://api.themoviedb.org/3/movie/#{api_id}?api_key=#{ENV['TMDB_api_key']}&language=en-US")
   end

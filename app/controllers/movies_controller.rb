@@ -24,6 +24,10 @@ class MoviesController < ApplicationController
     end
   end
 
+  def recommended_movies
+    @movies = MovieService.recommendations(params[:api_id])
+  end
+
   def search
     render 'search'
   end

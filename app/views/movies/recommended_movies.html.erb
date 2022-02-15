@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="text-center my-5">Recommended Movies for <%= params[:name]%> </h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
+    <% @movies.each do |movie| %>
+      <div class="col">
+        <div class="card bg-dark shadow-sm h-100" style="min-width:225px">
+          <div class="card-body text-white" style="background-color:black; font-weight:400;">
+            <div class="row p-0 g-0">
+              <div class="ps-0 text-center text-uppercase">
+                <%= movie["title"] %>
+              </div>
+            </div>
+          </div>
+          <img class="img-fluid" src="https://image.tmdb.org/t/p/original<%= movie['backdrop_path']%>" alt="Card image">
+          <div class="card-footer d-flex justify-content-center p-3" style="background-color:#151616;">
+            <%= link_to "Movie Info", movie_path(movie["id"]), class: "btn btn-outline-info btn-sm me-3"%>
+            <% if user_signed_in? %>
+              <% watch_listed_movie = current_user.movies.find_by(api_id: movie["id"])%>
+              <% if watch_listed_movie.present? %>
+                <% watch_list_movie = current_user.watch_list_movies.find_by(movie_id: watch_listed_movie.id)%>
+                <%= link_to "- Watchlist", watch_list_movie_path(watch_list_movie.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
+              <% else %>
+                <%= render "shared/add_to_watchlist", movie: movie %>
+              <% end %>
+            <% else %>
+              <%= link_to "+ Watchlist", watch_list_movies_path, method: :post, class: "btn btn-sm btn-outline-primary"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

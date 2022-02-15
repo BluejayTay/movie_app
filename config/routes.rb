@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :watch_list_movies, except: [:edit]
   get 'movies/popular'
   get 'movies/search_by_title'
+  get 'movies/recommended_movies'
   get 'movies/search_results'
   get 'movies/search'
   get 'movies/top_rated'
