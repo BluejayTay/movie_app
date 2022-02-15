@@ -2,7 +2,7 @@
 
 class WatchListMoviesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_watch_list_movie, only: [:update, :destroy]
+  before_action :set_watch_list_movie, only: %i[update destroy]
 
   def index
     @watch_list_movies = current_user.watch_list_movies.order(priority: :desc)
@@ -36,7 +36,7 @@ class WatchListMoviesController < ApplicationController
   end
 
   private
-  
+
   def set_watch_list_movie
     @watch_list_movie = WatchListMovie.find(params[:id])
   end

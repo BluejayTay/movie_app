@@ -2,7 +2,7 @@
 
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_review, only: %i[edit update destroy]
 
   def index
     @reviews = current_user.reviews.order(created_at: :desc)
@@ -27,8 +27,7 @@ class ReviewsController < ApplicationController
     redirect_back(fallback_location: movie_path(id: @movie.api_id))
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @review.update(review_params)
@@ -46,7 +45,7 @@ class ReviewsController < ApplicationController
   end
 
   private
-  
+
   def set_review
     @review = Review.find(params[:id])
   end
