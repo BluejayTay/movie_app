@@ -3,12 +3,12 @@
 Rails.application.routes.draw do
   resources :reviews, except: [:show]
   resources :watch_list_movies, except: [:edit]
-  resources :movies, only: [:show]
   get 'movies/popular'
   get 'movies/search_by_title'
   get 'movies/search_results'
   get 'movies/search'
   get 'movies/top_rated'
+  resources :movies
   devise_for :users
   get 'welcome/index'
   root to: 'welcome#index'
