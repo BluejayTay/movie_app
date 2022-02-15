@@ -1,27 +1,27 @@
-<div class="container mb-5">
+<div class="container">
   <h1 class="text-center mb-5 pt-5">You have <%= current_user.watch_list_movies.count %> movies in your watchlist</h1>
   <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <% @watch_list_movies.each do |wlm|%>
+    <% @watch_list_movies.each do |watch_list_movie|%>
     <div class="col">
       <div class="card bg-dark shadow-sm h-100">
         <div class="card-body text-center text-white p-2" style="background-color:black; font-weight:400;">
-          <h6 class="text-uppercase p-0 m-0"><%= wlm.movie.name %></h6>
+          <h6 class="text-uppercase p-0 m-0"><%= watch_list_movie.movie.name %></h6>
         </div> 
         <div class="card-body text-center text-white p-2" style="font-weight:400">
-          <%= render "priority", wlm: wlm %>
+          <%= render "priority", watch_list_movie: watch_list_movie %>
         </div>  
         <div class="row g-0">
           <div class="col">
-            <img class="img-fluid img-flush" src="https://image.tmdb.org/t/p/original<%= wlm.movie.image_url %>" alt="Poster image">
+            <img class="img-fluid img-flush" src="https://image.tmdb.org/t/p/original<%= watch_list_movie.movie.image_url %>" alt="Poster image">
           </div>
         </div>
         <div class="card-footer d-flex justify-content-center py-3" style="background-color:#151616;">
-          <%= link_to "Movie Info", movie_path(wlm.movie.api_id), class: "btn btn-outline-info me-3"%>
-          <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, class: "btn btn-outline-danger"%>
+          <%= link_to "Movie Info", movie_path(watch_list_movie.movie.api_id), class: "btn btn-outline-info me-3"%>
+          <%= link_to "- Watchlist", watch_list_movie_path(watch_list_movie.id), method: :delete, class: "btn btn-outline-danger"%>
         </div>
       </div>
     </div>
-    <%end%>
+    <% end %>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-<div class="container mb-5">
+<div class="container">
   <h1 class="text-center my-5">Popular Movies</h1>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
     <% @movies.each do |movie| %>
@@ -18,10 +18,10 @@
           <div class="card-footer d-flex justify-content-center p-3" style="background-color:#151616;">
             <%= link_to "Movie Info", movie_path(movie["id"]), class: "btn btn-outline-info btn-sm me-3"%>
             <% if user_signed_in? %>
-              <% m = current_user.movies.find_by(api_id: movie["id"])%>
-              <% if m.present? %>
-                <% wlm = current_user.watch_list_movies.find_by(movie_id: m.id)%>
-                <%= link_to "- Watchlist", watch_list_movie_path(wlm.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
+              <% watch_listed_movie = current_user.movies.find_by(api_id: movie["id"])%>
+              <% if watch_listed_movie.present? %>
+                <% watch_list_movie = current_user.watch_list_movies.find_by(movie_id: watch_listed_movie.id)%>
+                <%= link_to "- Watchlist", watch_list_movie_path(watch_list_movie.id), method: :delete, class: "btn btn-sm btn-outline-danger"%>
               <% else %>
                 <%= render "shared/add_to_watchlist", movie: movie %>
               <% end %>

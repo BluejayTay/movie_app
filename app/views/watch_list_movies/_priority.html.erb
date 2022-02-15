@@ -1,6 +1,6 @@
-<%= simple_form_for wlm do |f| %>
-  <%= f.hidden_field :user_id, value: wlm.user_id %>
-  <%= f.hidden_field :movie_id, value: wlm.movie_id %>
+<%= simple_form_for watch_list_movie do |f| %>
+  <%= f.hidden_field :user_id, value: watch_list_movie.user_id %>
+  <%= f.hidden_field :movie_id, value: watch_list_movie.movie_id %>
   <div class="d-flex justify-content-center align-items-center p-0">
     <%= f.label "Priority:", class:"pe-1"%>
     <%= f.input :priority, collection: [['1', 'Low'], ['2', 'Medium'], ['3', 'High']], 
