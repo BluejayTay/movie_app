@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center my-5">Recommended Movies for <%= params[:name]%> </h1>
+  <h1 class="text-center my-5">Recommended Movies for <br><%= params[:name]%> </h1>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4">
     <% @movies.each do |movie| %>
       <div class="col">
