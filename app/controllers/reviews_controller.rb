@@ -17,11 +17,12 @@ class ReviewsController < ApplicationController
     @movie = Movie.find_or_create_by(movie_params)
 
     review_creation_params = review_params.merge(user_id: current_user.id, movie_id: @movie.id)
-    Review.create!(review_creation_params)
 
-    respond_to do |format|
-      format.html
-      format.json
+    if Review.create(review_creation_params).save
+      flash[:notice] = 'Review successfully created!'
+    else
+      flash[:alert] =
+        'Review creation was unsuccessful. Please make sure content and rating are not blank and try again.'
     end
 
     redirect_back(fallback_location: movie_path(id: @movie.api_id))
@@ -34,14 +35,19 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'Review successfully edited!'
       redirect_to reviews_path
     else
+      flash[:alert] = 'Edit was unsuccessful. Please try again.'
       render 'edit'
     end
   end
 
   def destroy
-    @review.destroy
-    flash[:notice] = 'Review successfully deleted!'
-    redirect_to reviews_path
+    if @review.destroy
+      flash[:notice] = 'Review successfully deleted!'
+    else
+      flash[:alert] = 'Delete was unsuccessful. Please try again.'
+    end
+
+    redirect_back(fallback_location: reviews_path)
   end
 
   private
