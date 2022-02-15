@@ -27,9 +27,10 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item py-1"><strong>Rating:</strong> <%=@movie["vote_average"] %>/10 (<%=@movie["vote_count"] %> votes)</li>
               <li class="list-group-item py-1"><strong>Runtime:</strong> <%=@movie["runtime"]%> minutes</li>
-              <li class="list-group-item py-1"><div><strong>Status:</strong> <%=@movie["status"] %></li>
-             <li class="list-group-item py-1"><strong>Release date:</strong> <%=@movie["release_date"][5..6]%>-<%=@movie["release_date"][8..9]%>-<%=@movie["release_date"][0..3]%></li>
-              <li class="list-group-item rounded-bottom"><strong>Overview:</strong> <%=@movie["overview"] %><br>
+              <li class="list-group-item py-1"><strong>Status:</strong> <%=@movie["status"] %></li>
+              <li class="list-group-item py-1"><strong>Release date:</strong> <%=@movie["release_date"][5..6]%>-<%=@movie["release_date"][8..9]%>-<%=@movie["release_date"][0..3]%></li>
+              <li class="list-group-item rounded-bottom">
+                <strong>Overview:</strong> <%=@movie["overview"] %><br>
                  <% if @movie["homepage"].present? %>
                   <a href='<%=@movie["homepage"] %>'>Website</a>
                 <% end %>
