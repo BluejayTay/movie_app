@@ -17,27 +17,27 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 
 ## Screenshots:
 [Welcome Mobile]
-<p style="text-alignment:center;"><img src="app/frontend/images/Welcome_mobile.png"  style="height:500px;">
+<p align="center"><img src="app/frontend/images/Welcome_mobile.png" style="height:500px;">
 </p>
 [Welcome Desktop]
 <p align="center">
-<img src="app/frontend/images/Welcome_Desktop.png"  height="500">
+<img src="app/frontend/images/Welcome_Desktop.png" style="height:500px;">
 </p>
 [Watchlist Desktop]
 <p align="center">
-<img src="app/frontend/images/Watchlist_Desktop.png"  height="500">
+<img src="app/frontend/images/Watchlist_Desktop.png" style="height:500px;">
 </p>
 [Search Results Desktop]
 <p align="center">
-<img src="app/frontend/images/Search_Results_Desktop.png"  height="500">
+<img src="app/frontend/images/Search_Results_Desktop.png" style="height:400px;">
 </p>
 [Movie Page Desktop]
 <p align="center">
-<img src="app/frontend/images/Movie_Page_Desktop.png"  height="500">
+<img src="app/frontend/images/Movie_Page_Desktop.png" style="height:500px;">
 </p>
 [Recommended Movies Desktop]
 <p align="center">
-<img src="app/frontend/images/Recommended_Movies_Desktop.png"  height="400">
+<img src="app/frontend/images/Recommended_Movies_Desktop.png" style="height:400px;">
 </p>
 
 ## Future Enhancements:
