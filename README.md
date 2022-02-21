@@ -17,8 +17,8 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 
 ## Screenshots:
 [Welcome Mobile]
-<img src="app/frontend/images/Welcome_mobile.png"  style="height:500px;">
-
+<p style="align:center;"><img src="app/frontend/images/Welcome_mobile.png"  style="height:500px;">
+</p>
 [Welcome Desktop]
 <p align="center">
 <img src="app/frontend/images/Welcome_Desktop.png"  height="500">
