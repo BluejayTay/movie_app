@@ -34,7 +34,7 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 </p>
 [Movie Page Desktop]
 <p align="center">
-<img src="app/frontend/images/Movie_page_desktop.png"  height="500">
+<img src="app/frontend/images/Movie_Page_Desktop.png"  height="500">
 </p>
 [Movie Page Desktop]
 <p align="center">
