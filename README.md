@@ -13,11 +13,37 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 - Bootstrap 5.0
 - Devise authentication
 - Figaro
+- The Movie Database API
 
-## Future Additions:
-- Option to see additional pages of results beyond the first page (currently limited to first 20 movies listed in given search.)
+## Screenshots:
+![Welcome Mobile](app/frontend/images/Welcome_mobile.png)
+<p align="center">
+<img src="app/frontend/images/Welcome_mobile.png"  height="500">
+</p>
+![Welcome Desktop](app/frontend/images/Welcome_Desktop.png)
+<p align="center">
+<img src="app/frontend/images/Welcome_Desktop.png"  height="500">
+</p>
+![Watchlist Desktop](app/frontend/images/Watchlist_Desktop.png)
+<p align="center">
+<img src="app/frontend/images/Watchlist_Desktop.png"  height="500">
+</p>
+![Search Results Desktop](app/frontend/images/Search_Results_Desktop.png)
+<p align="center">
+<img src="app/frontend/images/Search_Results_Desktop.png"  height="500">
+</p>
+![Movie Page Desktop](app/frontend/images/Search_Results_Desktop.png)
+<p align="center">
+<img src="app/frontend/images/Movie_page_desktop.png"  height="500">
+</p>
+![Movie Page Desktop](app/frontend/images/Recommended_Movies_Desktop.png)
+<p align="center">
+<img src="app/frontend/images/Recommended_Movies_desktop.png"  height="500">
+</p>
+## Future Enhancements:
+
 - A preferences form/profile for users to get recommendations for movies to watch based on their preferences.
 - A user "Profile" page that is public to other users.
 - A model for "Favorites" so Users can display their favorite movies on their profile page.
-- Option to filter searches by streaming services.
 - Ability for users to create different watchlists (e.g., Kids, Date Night, etc.).
+- Paginate search results (currently limited to first 20 movies listed in given search.)
