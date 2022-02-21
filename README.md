@@ -17,7 +17,7 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 
 ## Screenshots:
 [Welcome Mobile]
-<p align="center"><img src="app/frontend/images/Welcome_mobile.png" style="height:500px;">
+<p align="center"><img src="app/frontend/images/Welcome_Mobile.png" style="height:500px;">
 </p>
 [Welcome Desktop]
 <p align="center">
@@ -33,7 +33,7 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 </p>
 [Movie Page Desktop]
 <p align="center">
-<img src="app/frontend/images/Movie_Page_Desktop.png" style="height:500px;">
+<img src="app/frontend/images/Dune_Page_Desktop.png" style="height:500px;">
 </p>
 [Recommended Movies Desktop]
 <p align="center">
