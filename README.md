@@ -16,29 +16,29 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 - The Movie Database API
 
 ## Screenshots:
-![Welcome Mobile]
+[Welcome Mobile]
 <p align="center">
 <img src="app/frontend/images/Welcome_mobile.png"  height="500">
 </p>
-![Welcome Desktop]
+[Welcome Desktop]
 <p align="center">
 <img src="app/frontend/images/Welcome_Desktop.png"  height="500">
 </p>
-![Watchlist Desktop]
+[Watchlist Desktop]
 <p align="center">
 <img src="app/frontend/images/Watchlist_Desktop.png"  height="500">
 </p>
-![Search Results Desktop]
+[Search Results Desktop]
 <p align="center">
 <img src="app/frontend/images/Search_Results_Desktop.png"  height="500">
 </p>
-![Movie Page Desktop]
+[Movie Page Desktop]
 <p align="center">
 <img src="app/frontend/images/Movie_page_desktop.png"  height="500">
 </p>
-![Movie Page Desktop]
+[Movie Page Desktop]
 <p align="center">
-<img src="app/frontend/images/Recommended_Movies_desktop.png"  height="500">
+<img src="app/frontend/images/Recommended_Movies_Desktop.png"  height="500">
 </p>
 
 ## Future Enhancements:
