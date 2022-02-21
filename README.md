@@ -36,7 +36,7 @@ See the [deployed app](https://groovie-app.herokuapp.com)
 <p align="center">
 <img src="app/frontend/images/Movie_Page_Desktop.png"  height="500">
 </p>
-[Movie Page Desktop]
+[Recommended Movies Desktop]
 <p align="center">
 <img src="app/frontend/images/Recommended_Movies_Desktop.png"  height="500">
 </p>
